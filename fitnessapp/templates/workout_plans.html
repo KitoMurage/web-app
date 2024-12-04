@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Workout Plans</h1>
+    <div class="card-container">
+        {% for plan in workout_plans %}
+        <a href="{{ url_for('view_workout_plan', id=plan.id) }}" class="card-link">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ plan.name }}</h5>
+                    <h6 class="card-subtitle">{{ plan.group_label }}</h6>
+                    <p class="card-text">
+                        {{ plan.description if plan.description else "No description available." }}
+                    </p>
+                    <div class="button-group">
+                       
+                        {% if not plan.is_default %}
+                        <form action="{{ url_for('delete_workout_plan', plan_id=plan.id) }}" method="POST" >
+                            <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this workout plan?')">
+                                Delete
+                            </button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

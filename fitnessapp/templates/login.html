@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Fitness App{% endblock %}
+
+{% block content %}
+    <h2 class="text-center">Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            {{ form.username(class="form-control", id="username") }}
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            {{ form.password(class="form-control", id="password") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary btn-block") }}
+        </div>
+
+        <p class="text-center">Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a></p>
+    </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Your Health Metrics</h1>
+
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.height.label }} {{ form.height(size=10) }}
+    </div>
+    <div>
+        {{ form.current_weight.label }} {{ form.current_weight(size=10) }}
+    </div>
+    <div>
+        {{ form.weight_goal.label }} {{ form.weight_goal(size=10) }}
+    </div>
+    <div>
+        {{ form.weight_date.label }} {{ form.weight_date() }}  
+    </div>
+    <div>
+        {{ form.submit(class="btn-primary")}}
+    </div>
+</form>
+
+{% if weight_trend_info %}
+    <h3>Weight Trend</h3>
+    <ul>
+        {% for info in weight_trend_info %}
+            <li>
+                <strong>{{ info.entry.date }}</strong>: 
+                Weight: {{ info.entry.weight }} kg, 
+                {{ info.message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No weight history available.</p>
+{% endif %}
+
+
+
+{% endblock %}

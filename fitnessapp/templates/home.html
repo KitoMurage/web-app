@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Lift Like a <span>Titan</span>.</h1>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-content">
+      <h2>About Us.</h2>
+      <p>
+        Welcome to AtlasLift! We are all about supporting your fitness journey, whether you're a beginner or an advanced lifter. Our goal is to help you stay consistent with your workouts and track your progress throughout  yout journey. We provide a range of free workout plans to help you start your journey, but we also allow you to build workouts tailored to your own goals.
+      </p>
+      <a href="{{ url_for('create_workout_plan') }}" class="btn-get-started">Get Started</a>
+    </div>
+  </section>
+{% endblock %}

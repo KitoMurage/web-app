@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Exercise for {{ workout_plan.name }}</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        <label for="sets">Sets:</label>
+        {{ form.sets() }}
+    </div>
+    <div>
+        <label for="reps">Reps:</label>
+        {{ form.reps() }}
+    </div>
+    <button type="submit" class="btn-primary">Save Changes</button>
+</form>
+<a href="{{ url_for('view_workout_plan', id=workout_plan.id) }}" class="btn-primary">Back to Plan</a>
+
+{% endblock %}

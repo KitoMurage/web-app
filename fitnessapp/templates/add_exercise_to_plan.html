@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add Exercise to "{{ workout_plan.name }}"</h2>
+
+    <form method="POST" action="{{ url_for('add_exercise_to_plan', workout_plan_id=workout_plan.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.exercise.label }}
+            {{ form.exercise(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.sets.label }}
+            {{ form.sets(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.reps.label }}
+            {{ form.reps(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+
+    <h3>Current Exercises in this Workout Plan</h3>
+    <ul>
+        {% for entry in workout_plan.workout_plan_exercises %}
+            <li>{{ entry.exercise.name }} - Sets: {{ entry.sets }} | Reps: {{ entry.reps }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
