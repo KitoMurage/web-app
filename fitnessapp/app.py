@@ -48,6 +48,9 @@ def create_app():
             flash('Your account has been created!', 'success')
             login_user(new_user)
             return redirect(url_for('home'))
+        else:
+            if form.errors:
+                flash('Registration unsuccessful. Please correct the errors and try again.', 'danger')
         return render_template('register.html', form=form)
 
     @app.route('/login', methods=['GET', 'POST'])
